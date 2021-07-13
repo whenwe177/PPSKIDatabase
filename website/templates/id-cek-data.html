@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Cek Data Anggota{% endblock %}
+{% block logo %}/{% endblock %}
+{% block alternative %}{% endblock %}
+{% block content %}
+<br/>
+<section id="data-anggota">
+    <div>
+        <div class="container-data-anggota">
+            <br/>
+            <br/>
+            <h4 style="font-weight:800;font-family:Montserrat;font-size:2em;">{{ user.nama_lengkap.upper() }}</h4>
+            <h5 style="font-size:1.5em;">{{ user.nama_tempat }} - {{ user.tempat_mengajar }}</h5>
+            <h5 style="font-size:1.5em;">{{ user.kabupaten_kota }} - {{ " ".join(user.provinsi.split()[1:]) }}</h5>
+            <h5 style="font-size:1.5em">NO PPSKI : {{ user.id }}/{{ user.id_ppski }}</h5>
+            <br/>
+        </div>
+        <button class="login-button" onclick="window.location.href='/cek-data-anggota'" style="top:400px;left:44.25vw;">KEMBALI</button>
+    </div>
+</section>
+{% endblock %}

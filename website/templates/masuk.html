@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Masuk{% endblock %}
+{% block logo %}/{% endblock %}
+{% block content %}
+<br/>
+<section id="login">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <br/>
+        <br/>
+      {% for category, message in messages %}
+        {% if category == 'error' %}
+          <div class="alert alert-danger alter-dismissable fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% else %}
+          <div class="alert alert-success alter-dismissable fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <h3 align="center" style="color:white;font-size:36px;font-style:normal;font-family:Montserrat;">Masuk</h3>
+    <form method="POST">
+        <div class="login-container">
+                <input
+                type="email"
+                class="login-input"
+                id="email"
+                name="email"
+                placeholder="Email"
+                style="margin-top:41px;"
+                />
+                <br/>
+                <input
+                type="password"
+                class="login-input"
+                id="password"
+                name="password"
+                placeholder="Password"
+                />
+            <button type="submit" class="login-button">MASUK</button>
+        </div>
+    </form>
+</section>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}User Dashboard{% endblock %}
+{% block logo %}/user-dashboard{% endblock %}
+{% block content %}
+
+<section id="landing">
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        {% if category == 'error' %}
+          <div class="alert alert-danger alter-dismissable fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% else %}
+          <div class="alert alert-success alter-dismissable fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+<h1 style="font-family:Montserrat;font-style:normal;font-weight:900;font-size:40px;color:white;margin-left:10vw;">Selamat Datang {{ accessing_user.nama_lengkap.split()[0] }}</h1>
+<h2 style="font-family:Montserrat;font-style:normal;font-weight:900;font-size:36px;color:white;margin-left:10vw;">di halaman dashboard anggota.</h2>
+<button class="button-edit" onclick="window.location.href='/edit-profil'">EDIT PROFIL</button>
+<br/>
+<button class="button-ganti-password" onclick="window.location.href='/ganti-password'">GANTI PASSWORD</button>
+</section>
+{% endblock %}

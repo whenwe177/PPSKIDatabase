@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+{% block title %}Beranda{% endblock %}
+{% block logo %}/{% endblock %}
+{% block content %}
+<style>
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+<!--    body{-->
+<!--      font-family: 'Exo', sans-serif;-->
+<!--      background-image: url("static/background.jpeg");-->
+<!--      background-attachment: fixed;-->
+<!--      overflow: hidden;-->
+<!--    }-->
+</style>
+<section id="landing" style="margin-top:30px;">
+    <div class="special-card" style="width:50%;margin-left:100px;margin-top:75px;">
+    <div class="context">
+    <!--text-shadow: 2px 2px 2px black-->
+    <h1 style="font-family:Montserrat;font-size:40px;">DATABASE APPLICATION</h1>
+    <h2 style="font-family:Montserrat;font-size:36px;">Perkumpulan Pendidik Sains Kimia Indonesia</h2>
+    </div>
+    </div>
+    <div class="twoContainer" align="center">
+        <a href="#pendaftaran"><button class="btn-1" onclick="">GABUNG SEKARANG!</button></a>
+    </div>
+    </section>
+    <section id="welcome" style="margin-top:8vw;">
+        <div class="input-container">
+            <div class="container" style="align:right;">
+                <img src="static\003-copyright 1.svg" style="margin-left:30vw;">
+            </div>
+            <div class="container">
+                <h1>Lorem Ipsum</h1>
+            </div>
+        </div>
+    </section>
+    <section id="pendaftaran">
+    <div class="register-container" style="margin-top: 5vw;">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <br/>
+            <br/>
+          {% for category, message in messages %}
+            {% if category == 'error' %}
+              <div class="alert alert-danger alter-dismissable fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              {% else %}
+              <div class="alert alert-success alter-dismissable fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+    <form method="POST">
+        <br/>
+        <h3 align="center" style="color:white;font-family:Montserrat;font-size:36px">Pendaftaran Anggota</h3>
+        <div class="input-container">
+            <input
+            type="text"
+            class="custom-input"
+            id="nama"
+            name="nama"
+            placeholder="Nama Lengkap (format: Aang Suhendar)"
+            align="right"
+            />
+            <input
+                type="number"
+                class="custom-input"
+                id="nomortelepon"
+                name="nomortelepon"
+                placeholder="Nomor Telepon (format: 08XXXXXXXXXX)"
+                align="right"
+                style="left:40px;"
+                />
+        </div>
+        <div class="input-container">
+            <input
+            type="email"
+                class="custom-input"
+            id="email"
+            name="email"
+            placeholder="Alamat Surel/Email (format: aangsuhendar@gmail.com)"
+            />
+            <input
+            type="text"
+            class="custom-input"
+            id="akun-facebook"
+            name="akun-facebook"
+            placeholder="Akun facebook"
+            />
+        </div>
+        <div class="input-container">
+            <input
+            type="password"
+            class="custom-input"
+            id="password1"
+            name="password1"
+            placeholder="Password"
+            />
+        </div>
+        <div class="input-container">
+            <input
+            type="password"
+            id="password2"
+            class="custom-input"
+            name="password2"
+            placeholder="Konfirmasi Password"/>
+        </div>
+        <div class="input-container">
+        <label for="pendidikan" style="color:white">Jenjang Pendidikan</label>
+        </div>
+        <div class="input-container">
+        <select class="custom-input" name="pendidikan" id="pendidikan">
+            <option class="select-items" selected="selected" disabled>Pilih Jenjang Pendidikan</option>
+            <option class="select-items" value="S1 Pendidikan Kimia">S1 Pendidikan Kimia</option>
+            <option class="select-items" value="S1 Kimia Sains">S1 Kimia Sains</option>
+            <option value="S1 Teknik Kimia">S1 Teknik Kimia</option>
+            <option value="S2 Pendidikan Kimia">S2 Pendidikan Kimia</option>
+            <option value="S2 Kimia Sains">S2 Kimia Sains</option>
+            <option value="S2 Teknik Kimia">S2 Teknik Kimia</option>
+            <option value="S3 Pendidikan Kimia">S3 Pendidikan Kimia</option>
+            <option value="S3 Kimia Sains">S3 Kimia Sains</option>
+            <option value="S3 Teknik Kimia">S3 Teknik Kimia</option>
+        </select>
+
+        </div>
+        <div class="input-container">
+            <label for="sekolah_tempat_mengajar" style="color:white">Sekolah Tempat Mengajar</label>
+        </div>
+
+        <div class="input-container">
+            <select class="custom-input" name="sekolah_tempat_mengajar" id="sekolah_tempat_mengajar">
+                <option selected="selected" disabled>Jenjang Tempat Mengajar</option>
+                <option value="SMA/MA">SMA/MA</option>
+                <option value="SMA/MAK">SMA/MAK</option>
+                <option value="Perguruan Tinggi">Perguruan Tinggi</option>
+                <option value="Pend. nonformal jenjang SMA atau lebih tinggi">Pend. nonformal jenjang SMA atau lebih tinggi</option>
+            </select>
+            <input
+            type="text"
+            class="custom-input"
+            id="nama-sekolah-lembaga"
+            name="nama-sekolah-lembaga"
+            placeholder="Nama Instansi"
+            />
+        </div>
+        <div class="input-container">
+            <select name="provinsi" id="provinsi" class="custom-input">
+                <option selected="selected" disabled>Provinsi</option>
+                {% for province in provinsi %}
+                <option value="{{ province }}">{{ province[province.index(" ")+1:] }}</option>
+                {% endfor %}
+            </select>
+            <select name="kabkota" id="kabkota" class="custom-input">
+                <option selected="selected" disabled>Kota</option>
+                <option value="SomeKota">Some Kota</option>
+            </select>
+        </div>
+        <div class="input-container">
+            <label for="esai" style="color:white;font-family:Montserrat;font-size:36px">Esai Singkat</label>
+        </div>
+        <div class="input-container">
+            <textarea name="esai" id="esai" class="form-control" placeholder="Buatlah sebuah esai singkat (200-300 kata) yang menjelaskan pandangan Anda mengenai kunci kemajuan guru kimia Indonesia!"
+            rows="10" cols="50" style="width:98%"></textarea>
+        </div>
+
+        <div class="input-container" align="center">
+            <button type="submit" class="btn-1" style="border-radius:500px">Submit</button>
+        </div>
+    </form>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<section id="laman-admin" style="margin-top:6vh;">
+    <div class="input-container" style="margin-top:22vh;">
+        <h1 style="margin-left:3.5vw;font-family:Montserrat;color:white;">Laman Admin</h1>
+    </div>
+    <div class="input-container" style="margin-top:0vh;">
+        <input type="button" class="option-box" onclick="window.location.href='/registration-queue'" value="Permohonan Pendaftaran">
+        <input type="button" class="option-box" onclick="window.location.href='/table-display'" value="Tabel Anggota">
+        <input type="button" class="option-box" onclick="window.location.href='/kirim-hasil-review'" value="Kirim Hasil Review">
+    </div>
+
+</section>
+{% endblock %}

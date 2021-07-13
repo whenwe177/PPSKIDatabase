@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Tabel Anggota{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/styles.css">
+<section id="table" style="margin-top:6vh;">
+    <h3 align="center" style="margin-top:50px;color:white;font-family:Montserrat;font-size:36px;">Tabel Anggota</h3>
+    <div class="table-container" style="margin-top:120px;">
+        <form method="POST">
+        <div class="input-container">
+            <input class="input-edit" placeholder="Nama Lengkap" id="keyword"
+            name="keyword"/>
+            <button class="table-search-button" style="color:white;">CARI</button>
+        </div>
+        <div class="input-container">
+            <select name="provinsifilter" id="provinsifilter" class="input-edit input-edit-editable">
+                <option value="">Provinsi</option>
+                {% for province in provinsi %}
+                <option value="{{ province }}">{{ " ".join(province.split()[1:]) }}</option>
+                {% endfor %}
+            </select>
+            <select name="somefilter" id="somefilter" class="input-edit input-edit-editable">
+                <option value=""></option>
+                {% for province in provinsi %}
+                <option value="{{ province }}">{{ " ".join(province.split()[1:]) }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        </form>
+        <p style="margin-left:1.5vw;">Matching items: {{ count }}</p>
+        <div class="header-container" style="margin-top:15px;">
+            <div class="row-container" style="margin-left:1vw;width:5vw;">No. Urut</div>
+            <div class="row-container" style="margin-left:1vw;width:15vw;">Nama</div>
+            <div class="row-container" style="margin-left:1vw;width:15vw;">Email</div>
+            <div class="row-container" style="margin-left:1vw;width:10vw;">No. PPSKI</div>
+            <div class="row-container" style="margin-left:1vw;width:20vw;">Provinsi</div>
+            <div class="row-container" style="margin-left:1vw;width:20vw;">Kab/Kota</div>
+            <div class="row-container" style="margin-top:13px;width:10vw;text-align:right;font-size: 12px;">
+
+            </div>
+        </div>
+        {% for user in permanen %}
+        <div class="table-rows" style="margin-top:15px;">
+            <div class="row-container" style="margin-left:1vw;width:5vw;font-size: 14px;">{{ user.id }}</div>
+            <div class="row-container" style="margin-left:1vw;width:15vw;font-size: 14px;">{{ user.nama_lengkap }}</div>
+            <div class="row-container" style="margin-left:1vw;width:15vw;font-size: 14px;">{{ user.email }}</div>
+            <div class="row-container" style="margin-left:1vw;width:10vw;font-size: 14px;">{{ user.id_ppski }}</div>
+            <div class="row-container" style="margin-left:1vw;width:20vw;font-size: 14px;">{{ user.provinsi }}</div>
+            <div class="row-container" style="margin-left:1vw;width:20vw;font-size: 14px;">{{ user.kabupaten_kota }}</div>
+            <div class="row-container" style="margin-top:13px;width:10vw;text-align:right;font-size: 12px;">
+                <input onclick="window.location.href='/admin-edit-user/{{ user.id }}'" type="button" class="details-button" value="Details"/>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

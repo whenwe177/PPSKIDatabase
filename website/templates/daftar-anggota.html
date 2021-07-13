@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% block title %}Daftar Anggota{% endblock %}
+{% block logo %}/{% endblock %}
+{% block content %}
+<form method="POST">
+    <br/>
+    <h3 align="center">Form Pendaftaran Anggota</h3>
+    <div class="grey">
+    <div class="form-group">
+        <label for="nama">Nama Lengkap</label>
+        <input
+        type="text"
+        class="form-control"
+        id="nama"
+        name="nama"
+        placeholder="Aang Suhendar"
+        />
+    </div>
+    <div class="form-group">
+        <label for="email">Alamat Surel/Email</label>
+        <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="email"
+        placeholder="Alamat Surel/Email"
+        />
+    </div>
+        <label for="password1">Password</label>
+        <input
+        type="password"
+        id="password1"
+        name="password1"
+        placeholder="Password"/>
+        <label for="password2">Konfirmasi Password</label>
+        <input
+        type="password"
+        id="password2"
+        name="password2"
+        placeholder="Konfirmasi Password"/>
+    </div>
+    <br/>
+    <div class="grey">
+    <div class="custom-select">
+        <label for="pendidikan">Pendidikan</label>
+        <select name="pendidikan" id="pendidikan">
+            <option selected="selected">--Pilih Jenjang Pendidikan--</option>
+            <option value="S1 Pendidikan Kimia">S1 Pendidikan Kimia</option>
+            <option value="S1 Kimia Sains">S1 Kimia Sains</option>
+            <option value="S1 Teknik Kimia">S1 Teknik Kimia</option>
+            <option value="S2 Pendidikan Kimia">S2 Pendidikan Kimia</option>
+            <option value="S2 Kimia Sains">S2 Kimia Sains</option>
+            <option value="S2 Teknik Kimia">S2 Teknik Kimia</option>
+            <option value="S3 Pendidikan Kimia">S3 Pendidikan Kimia</option>
+            <option value="S3 Kimia Sains">S3 Kimia Sains</option>
+            <option value="S3 Teknik Kimia">S3 Teknik Kimia</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="sekolah_tempat_mengajar">Sekolah Tempat Mengajar</label>
+        <select name="sekolah_tempat_mengajar" id="sekolah_tempat_mengajar">
+            <option selected="selected">--Pilih Tempat Mengajar--</option>
+            <option value="SMA/MA">SMA/MA</option>
+            <option value="SMA/MAK">SMA/MAK</option>
+            <option value="Perguruan Tinggi">Perguruan Tinggi</option>
+            <option value="Pend. nonformal jenjang SMA atau lebih tinggi">Pend. nonformal jenjang SMA atau lebih tinggi</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="nama-sekolah-lembaga">Nama Sekolah/Lembaga</label>
+        <input
+        type="text"
+        class="form-control"
+        id="nama-sekolah-lembaga"
+        name="nama-sekolah-lembaga"
+        placeholder="SMAN 1 Bekasi"
+        />
+    </div>
+
+    <div class="form-group">
+        <label for="akun-facebook">Akun Facebook</label>
+        <input
+        type="akun-facebook"
+        class="form-control"
+        id="akun-facebook"
+        name="akun-facebook"
+        placeholder="Akun facebook"
+        />
+    </div>
+
+    <div class="form-group">
+        <label for="nomortelepon">Nomor Telepon</label>
+        <input
+        type="nomortelepon"
+        class="form-control"
+        id="nomortelepon"
+        name="nomortelepon"
+        placeholder="Nomor Telepon"
+        />
+    </div>
+
+    <div class="form-group">
+        <label for="provinsi">Provinsi</label>
+        <select name="provinsi" id="provinsi">
+            <option selected="selected">--Pilih Provinsi--</option>
+            {% for province in provinsi %}
+            <option value="{{ province }}">{{ province[province.index(" ")+1:] }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="kabkota">Kab/Kota</label>
+        <select name="kabkota" id="kabkota">
+            <option selected="selected">--Pilih Kota--</option>
+            <option value="SomeKota">Some Kota</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+    <label for="esai">Esai Singkat</label>
+    <textarea name="esai" id="esai" class="form-control" placeholder="Buatlah sebuah esai singkat (200-300 kata) yang menjelaskan pandangan Anda mengenai kunci kemajuan guru kimia Indonesia!"
+    rows="10" cols="50"></textarea>
+    </div>
+    <div align="left">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    </div>
+</form>
+
+{% endblock %}

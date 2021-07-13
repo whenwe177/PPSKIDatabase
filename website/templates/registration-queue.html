@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Permohonan Pendaftaran{% endblock %}
+
+{% block content %}
+<section id="registration-queue" style="margin-top:3vw;">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <br/>
+        <br/>
+      {% for category, message in messages %}
+        {% if category == 'error' %}
+          <div class="alert alert-danger alter-dismissable fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% else %}
+          <div class="alert alert-success alter-dismissable fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <h1 align="center" style="font-family:Montserrat;color:white;margin-top:0vw;">Permohonan Pendaftaran</h1>
+    <div class="container-permohonan-pendaftaran" style="margin-top:5vw;">
+        {% for user in temporer %}
+        {% if user.status != "direview" %}
+        <div class="box-data-display-queue">
+            <div class="review-container">
+                <div class="review-container" style="justify-content:flex-start;width:50%;margin-left:2%;margin-top:3.5%;
+                    color:white;">
+                    <p style="font-family:Montserrat;font-style:normal;font-size:1.5vw;">No {{ user.id }} - {{ user.nama_lengkap }}</p>
+                </div>
+                <div class="review-container" style="justify-content:flex-end;width:50%;margin-right:2%;margin-top:4.5%;">
+                    <input type="submit" class="review-button" value="Review" style="color:white;background-color:black;" onclick="reviewSelected( {{ user.id }} )" />
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <br/>
+    </div>
+</section>
+
+{% endblock %}

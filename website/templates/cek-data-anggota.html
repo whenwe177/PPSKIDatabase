@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Data Anggota{% endblock %}
+
+{% block logo %}/{% endblock %}
+
+{% block content %}
+<section id="cek-data-anggota">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <br/>
+        <br/>
+      {% for category, message in messages %}
+        {% if category == 'error' %}
+          <div class="alert alert-danger alter-dismissable fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% else %}
+          <div class="alert alert-success alter-dismissable fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <div class="container-cek-data">
+    <div align="center">
+        <br/><br/><br/>
+        <h1 style="font-family:Montserrat;color:#2E68FF;font-size:36px;font-weight:black;">Cek Data Anggota</h1>
+        <br/>
+        <form method="POST">
+
+                <input
+                type="text"
+                class="input-grey"
+                id="nama"
+                name="nama"
+                placeholder="  Nama Lengkap"
+                />
+                <button class="red-search-button" style="font-family:Montserrat;color:white;font-weight:normal;">Cari</button>
+
+        </form>
+    </div>
+    <div class="container-fluid">
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    {% for matching in matching_array %}
+    <button class="display-info-box" onclick="window.location.href='/id-cek-data/{{ matching.id }}'">
+        <span>{{ matching.nama_lengkap.upper()[0:16] }}</span><br/>
+        <span style="font-size:15px;font-weight:normal;">{{ matching.nama_tempat }} - {{ matching.kabupaten_kota }}</span>
+    </button>
+    {% endfor %}
+
+    </div>
+    </div>
+</section>
+{% endblock %}

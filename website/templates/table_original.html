@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Tabel Anggota{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/styles.css">
+
+<br/>
+<h3 align="center">Daftar Anggota PPSKI Pusat</h3>
+
+<form method="POST">
+    <div class="form-group">
+        <label for="keyword">Keyword</label>
+        <input
+            type="text"
+            class="topnav input"
+            id="keyword"
+            name="keyword"
+            placeholder="Enter Keyword"
+            />
+    <button class="buttonSpecial buttonSpecial-search">Search</button>
+    </div>
+</form>
+
+<br/>
+<div class="table-container">
+<table class="user-table" align="center">
+    <tr>
+        <th align="center">Query</th>
+        <th align="center">Nomor Urut</th>
+        <th align="center">ID PPSKI</th>
+        <th align="center">Email</th>
+        <th align="center">Nama Lengkap</th>
+        <th align="center">Pendidikan</th>
+        <th align="center">Tempat Mengajar</th>
+        <th align="center">Nama Sekolah Tempat Mengajar</th>
+        <th align="center">Akun Facebook</th>
+        <th align="center">Nomor Telepon</th>
+        <th align="center">Provinsi</th>
+        <th align="center">Kabupaten Kota</th>
+    </tr>
+    {% for user in permanen %}
+    <tr>
+        <td align="center">
+            <a href="/admin-edit-user/{{ user.id }}" type="button" class="buttonSpecial smallest">"✎ Edit"</a>
+        </td>
+        <td align="center">
+            {{ user.id }}
+        </td>
+        <td>
+            {{ user.id_ppski }}
+        </td>
+        <td>
+            {{ user.email }}
+        </td>
+        <td>
+            {{ user.nama_lengkap }}
+        </td>
+        <td>
+            {{ user.pendidkan }}
+        </td>
+        <td>
+            {{ user.tempat_mengajar }}
+        </td>
+        <td>
+            {{ user.nama_tempat }}
+        </td>
+        <td>
+            {{ user.akun_facebook }}
+        </td>
+        <td>
+            {{ user.nomor_telepon }}
+        </td>
+        <td>
+            {{ user.provinsi }}
+        </td>
+        <td>
+            {{ user.kabupaten_kota }}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+{% endblock %}

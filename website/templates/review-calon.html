@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="register-container" style="margin-top: 5vw;height:1000px;">
+<form method="POST">
+    <br/>
+    <h3 align="center" style="color:white;font-family:Montserrat;font-size:36px">REVIEW CALON</h3>
+    <div class="input-container">
+        <input
+        type="text"
+        class="custom-input"
+        id="nama"
+        name="nama"
+        placeholder="{{ paramUser.nama_lengkap }}"
+        align="right"
+        disabled/>
+        <input
+            type="number"
+            class="custom-input"
+            id="nomortelepon"
+            name="nomortelepon"
+            placeholder="{{ paramUser.nomor_telepon }}"
+            align="right"
+            style="left:40px;"
+            disabled
+        />
+    </div>
+    <div class="input-container">
+        <input
+        type="email"
+            class="custom-input"
+        id="email"
+        name="email"
+        placeholder="{{ paramUser.email }}"
+        disabled
+        />
+        <input
+        type="text"
+        class="custom-input"
+        id="akun-facebook"
+        name="akun-facebook"
+        placeholder="{{ paramUser.akun_facebook }}"
+        disabled
+        />
+    </div>
+    <div class="input-container">
+    <label for="pendidikan" style="color:white">Jenjang Pendidikan</label>
+    </div>
+    <div class="input-container">
+    <select class="custom-input" name="pendidikan" id="pendidikan" disabled>
+        <option class="select-items" selected="selected" disabled>{{ paramUser.pendidikan }}</option>
+        <option class="select-items" value="S1 Pendidikan Kimia">S1 Pendidikan Kimia</option>
+        <option class="select-items" value="S1 Kimia Sains">S1 Kimia Sains</option>
+        <option value="S1 Teknik Kimia">S1 Teknik Kimia</option>
+        <option value="S2 Pendidikan Kimia">S2 Pendidikan Kimia</option>
+        <option value="S2 Kimia Sains">S2 Kimia Sains</option>
+        <option value="S2 Teknik Kimia">S2 Teknik Kimia</option>
+        <option value="S3 Pendidikan Kimia">S3 Pendidikan Kimia</option>
+        <option value="S3 Kimia Sains">S3 Kimia Sains</option>
+        <option value="S3 Teknik Kimia">S3 Teknik Kimia</option>
+    </select>
+
+    </div>
+    <div class="input-container">
+        <label for="sekolah_tempat_mengajar" style="color:white">Sekolah Tempat Mengajar</label>
+    </div>
+
+    <div class="input-container">
+        <select class="custom-input" name="sekolah_tempat_mengajar" id="sekolah_tempat_mengajar" disabled>
+            <option selected="selected" disabled>{{ paramUser.tempat_mengajar }}</option>
+            <option value="SMA/MA">SMA/MA</option>
+            <option value="SMA/MAK">SMA/MAK</option>
+            <option value="Perguruan Tinggi">Perguruan Tinggi</option>
+            <option value="Pend. nonformal jenjang SMA atau lebih tinggi">Pend. nonformal jenjang SMA atau lebih tinggi</option>
+        </select>
+        <input
+        type="text"
+        class="custom-input"
+        id="nama-sekolah-lembaga"
+        name="nama-sekolah-lembaga"
+        placeholder="{{ paramUser.nama_tempat }}"
+        disabled/>
+    </div>
+    <div class="input-container">
+        <select name="provinsi" id="provinsi" class="custom-input" disabled>
+            <option selected="selected" disabled>{{ paramUser.provinsi }}</option>
+            {% for province in provinsi %}
+            <option value="{{ province }}">{{ province[province.index(" ")+1:] }}</option>
+            {% endfor %}
+        </select>
+        <select name="kabkota" id="kabkota" class="custom-input" disabled>
+            <option selected="selected" disabled>{{ paramUser.kabupaten_kota }}</option>
+            <option value="SomeKota">Some Kota</option>
+        </select>
+    </div>
+    <div class="input-container">
+        <label for="esai" style="color:white;font-family:Montserrat;font-size:36px">Esai Singkat</label>
+    </div>
+    <div class="input-container">
+        <textarea readonly name="esai" id="esai" class="form-control" placeholder="{{ paramUser.esai_singkat }}"
+        rows="10" cols="50" style="width:98%" disabled></textarea>
+    </div>
+</form>
+<form method="POST">
+    <div class="input-container">
+        <button class="back-button-edit" onclick="tolakCalon( {{ paramUser.id }} )">Tolak</button>
+        <button class="save-button-edit" onclick="terimaCalon( {{ paramUser.id }} )">Terima</button>
+    </div>
+</form>
+</div>
+{% endblock %}
