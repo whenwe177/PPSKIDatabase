@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block title %}User Dashboard{% endblock %}
 {% block logo %}/user-dashboard{% endblock %}
+{% block source %}<img src="\static\ppski-logo.png" alt="" style="width:55px;height:55px;">{% endblock %}
 {% block content %}
-
 <section id="landing">
 {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
