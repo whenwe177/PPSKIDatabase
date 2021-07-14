@@ -292,6 +292,15 @@ td {
     width: 100px;
 }
 
+.website-title {
+
+}
+
+.website-heading {
+    font-family: "Montserrat", sans-serif;
+    font-size: 2.5rem;
+}
+
 .button-ganti-password {
     /* Rectangle 1 */
 
@@ -500,7 +509,7 @@ td {
     cover;
     position: absolute;
     width: 90vw;
-    height: 1100px;
+    height: auto;
     left: 5vw;
     border-radius: 20px;
     box-shadow: 5px 5px 20px;
@@ -646,22 +655,31 @@ section#landing {
     cover;
     background-attachment: none;
     justify-content: center;
-    height: 60vh;
+    height: auto;
     width: 100vw;
     border-radius:20px;
+
+    margin: 30px 0 0 0;
+}
+
+.special-card {
+    width: 50%;
+    margin-left: 6vw;
+    margin-top: 75px;
 }
 
 section#welcome {
     background-color:white;
     height: 80vh;
+
+    margin: 8vw 0 0 0;
 }
 section#pendaftaran {
     display: flex;
     flex-direction: row;
     width: 100vw;
-    height: 1200px;
-    padding: 50px;
-    margin-top: 30px;
+    height: auto;
+    margin-bottom: 30px;
     margin-right:50px;
     overflow: hidden;
     /* Scroll Snap */
@@ -778,7 +796,7 @@ div .grey {
   padding: 20px;
 }
 
-/* Style the form - display items horizontally */
+/* Style the form - display items horizontally, vertically after cutoff point */
 .form-inline {
   display: flex;
   flex-flow: row wrap;
@@ -813,14 +831,15 @@ div .grey {
 
 /* Add responsiveness - display the form controls vertically instead of horizontally on screens that are less than 800px wide */
 @media (max-width: 800px) {
-  .form-inline input {
-    margin: 10px 0;
-  }
 
-  .form-inline {
-    flex-direction: column;
-    align-items: stretch;
-  }
+    .form-inline input {
+        margin: 10px 0;
+    }
+
+    .form-inline {
+        flex-direction: column;
+        align-items: stretch;
+    }
 }
 
 #grad1 {
@@ -886,23 +905,24 @@ div .grey {
 }
 
 .btn-1 {
-    width: 220px;
-    height: 50px;
+    width: auto;
+    height: auto;
+    padding: 1rem 1.5rem;
     border: none;
     color: white;
     background-color: #F45F5C;
-    border-radius:20px;
+    border-radius: 500px;
     box-shadow: inset 0 0 0 0 #963fa1;
-    transition: ease-out 0.3s;
+    transition: padding ease-out 0.3s;
     font-size: 2res;
     outline: none;
+    margin: 10px;
 
 }
 
-/*.btn-1:hover {
-    box-shadow: inset 150px 0 0 0 #963fa1;
-}*/
-
+.btn-1:hover {
+    padding: 1rem 2.25rem;
+}
 
 
 @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
@@ -923,14 +943,18 @@ div .grey {
 .context h1{
     text-align: left;
     color: #fff;
-    font-size: 50px;
+    
+    font-family: "Montserrat", sans-serif;
+    font-size: 2.65rem;
 
 }
 
 .context h2{
     text-align: left;
     color: #fff;
-    font-size: 40px;
+    
+    font-family: "Montserrat", sans-serif;
+    font-size: 2.25rem;
 }
 
 .special-card {
@@ -1067,4 +1091,30 @@ div .grey {
 
 .navbar-white {
     color: white;
+}
+
+.navbar-brand.brand-margin {
+    margin-left: 10vw;
+}
+
+@media screen and (max-width: 600px) {
+    .input-container {
+        flex-direction: column;
+        margin: 10px 0 0 0;
+    }
+
+    .custom-input {
+        margin: 0 0 10px 0;
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .context h1 {
+        font-size: 2.4rem;
+    }
+
+    .context h2 {
+        font-size: 2rem;
+    }
 }
