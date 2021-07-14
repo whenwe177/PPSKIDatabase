@@ -604,7 +604,7 @@ section#data-anggota {
     /*scroll-snap-align: center;*/
     background: url('cek-data-anggota-bg.svg') no-repeat center center;
     background-attachment: none;
-    background-size: 100% auto;
+    background-size: 100vh;
 }
 
 .custom-footer {
